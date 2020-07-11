@@ -1,0 +1,22 @@
+<?php
+$title = 'My E-Mails';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p><a href="<?php echo $this->url('smail', array('action' => 'index')); ?>">Fetch new emails</a></p>
+<table class="table">
+    <tr>
+        <th>Email ID</th>
+        <th>Subject</th>
+        <th>Content</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($mails as $smail) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($smail->email_id); ?></td>
+            <td><?php echo $this->escapeHtml($smail->subject); ?></td>
+            <td><?php echo $this->escapeHtml($smail->content); ?></td>            
+            <td><a href="<?php echo $this->url('smail', array('action' => 'deleteMessage','id' => $smail->message_id)); ?>">Delete</a></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
